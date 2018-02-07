@@ -1,0 +1,22 @@
+{
+  "name": "exprestest",
+  "version": "0.0.5",
+  "description": "Update routes in app stack, and replace them by new routes from a router.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Alexandre PENOMBRE",
+    "email": "aluzed@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.16.2"
+  },
+  "keywords": [
+    "epxress",
+    "epxress-routes",
+    "router"    
+  ]
+}
