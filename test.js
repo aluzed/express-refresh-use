@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const purgeUse = require('./index');
+const refreshUse = require('./index');
 
 app.get('/lala', (req, res) => {
   res.send('lala');
@@ -12,7 +12,7 @@ router.get('/lala', (req, res) => {
   res.send('lolo');
 })
 
-purgeUse(app, router, '/');
+refreshUse(app, router, '/');
 
 app.listen('3001', () => {
   console.log('ok');
