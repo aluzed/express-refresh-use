@@ -1,11 +1,11 @@
-## Purge-Use
+## Express-Refresh-Use
 
 Update app.router stack by new routes before use.
 
 ### How to install
 
 ```
-npm i -S purge-use
+npm i -S express-refresh-use
 ```
 
 ### How to use
@@ -13,7 +13,7 @@ npm i -S purge-use
 ```javascript
 const express = require('express');
 const app = express();
-const purgeUse = require('./index');
+const refreshUse = require('express-refresh-use');
 
 app.get('/lala', (req, res) => {
   res.send('lala');
@@ -25,18 +25,17 @@ router.get('/lala', (req, res) => {
   res.send('lolo');
 })
 
-purgeUse(app, router, '/');
+refreshUse(app, router, '/');
 
 app.listen('3000', () => {
   console.log('Listening');
 });
 ```
 
-Then when you launch a curl : 
+Then when you launch a curl :
 
 ```
 curl http://localhost:3000/lala
 
 -> lolo
 ```
-

@@ -1,6 +1,6 @@
 {
   "name": "express-refresh-use",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Update routes in app stack, and replace them by new routes from a router.",
   "main": "index.js",
   "scripts": {
