@@ -20,35 +20,23 @@
  * @param {String} newPath app.use(newPath, router);
  */
 module.exports = (app, router, newPath) => {
-    function purgeRoute(layers, searchPath) {
+    function purgeRoute(layers, newReg) {
+        let found = [];
         layers.map((layer, i) => {
             let currentStack = layers[i];
-
-            switch(currentStack.name) {
-                case "bound dispatch":
-                    if(currentStack.route.path === searchPath) {
-                        layers.splice(i, 1);
-                        return i;
-                    }
-                break;
-
-                case "router":
-                    let index = purgeRoute(currentStack.handle.stack, path);
-                    // If index not null
-                    if(!!index)
-                        return index;
-                break;
+            if(currentStack.regexp.source === newReg) {
+                layers.splice(i, 1);
+                found.push(i);
             }
-        })
+        });
 
-        return null;
+        return found.length > 0 ? found : null;
     }
 
     // For each path in router, purge app stack first
     router.stack.map(layer => {
         if(layer.name === "bound dispatch" && typeof layer.route.path !== "undefined") {
-            let i = purgeRoute(app._router.stack, layer.route.path);
-            console.log(i);
+            purgeRoute(app._router.stack, layer.regexp.source);
         }
     })
 
