@@ -10,25 +10,28 @@ app.get('/lili', (req, res) => {
   res.send('lili');
 });
 
-router2 = express.Router();
+router1 = express.Router();
 
-router2.get('/toto', (req, res) => {
+router1.get('/toto', (req, res) => {
   res.send('toto');
 });
 
-app.use('/lolo', router2);
+// /lolo/toto
+app.use('/lolo', router1);
 
-router = express.Router();
 
-router.get('/lala', (req, res) => {
+router2 = express.Router();
+
+router2.get('/lala', (req, res) => {
   res.send('baba');
 })
 
-router.get('/lolo', (req, res) => {
+router2.get('/toto', (req, res) => {
   res.send('lolo');
 });
 
-refreshUse(app, router, '/');
+// /lolo/toto
+refreshUse(app, router2, '/lolo');
 
 app.listen('3001', () => {
   console.log('ok');
